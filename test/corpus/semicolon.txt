@@ -1,0 +1,51 @@
+================================
+Multiple assignments on one line
+================================
+
+devices = "d0,d1,d2"; leader = "d0"
+
+---
+
+(source_file
+  (statement
+    (assignment
+      (identifier)
+      (string)))
+  (statement
+    (assignment
+      (identifier)
+      (string))))
+
+
+================================
+Multiple assignments on one line inside block
+================================
+
+env.prod {
+  devices = "d0,d1,d2"; leader = "d0"
+}
+
+---
+
+(source_file
+  (statement
+    (expression
+      (identifier)))
+  (statement
+    (expression
+      (operator)))
+  (statement
+    (expression
+      (identifier)))
+  (statement
+    (expression
+      (block
+        (statement
+          (assignment
+            (identifier)
+            (string)))
+        (statement
+          (assignment
+            (identifier)
+            (string)))))))
+

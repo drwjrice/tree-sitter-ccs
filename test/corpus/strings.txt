@@ -1,0 +1,220 @@
+===============================
+Double-quoted string assignment
+===============================
+
+devices = "d0,d1,d2"
+
+---
+
+(source_file
+  (statement
+    (assignment
+      (identifier)
+      (string))))
+
+===============================
+Single-quoted string assignment
+===============================
+
+devices = 'd0,d1,d2'
+
+---
+
+(source_file
+  (statement
+    (assignment
+      (identifier)
+      (string))))
+
+==========================================
+Double-quoted multi-line string assignment
+==========================================
+
+devices = "
+  d0
+  d1
+  d2
+"
+
+---
+
+(source_file
+  (statement
+    (assignment
+      (identifier)
+      (string))))
+
+==========================================
+Single-quoted multi-line string assignment
+==========================================
+
+devices = '
+  d0
+  d1
+  d2
+'
+
+---
+
+(source_file
+  (statement
+    (assignment
+      (identifier)
+      (string))))
+
+================================
+Double-quoted string with escape
+================================
+
+devices = "d0,\"d1\",d2"
+
+---
+
+(source_file
+  (statement
+    (assignment
+      (identifier)
+      (string))))
+
+================================
+Single-quoted string with escape
+================================
+
+devices = 'd0,\'d1\',d2'
+
+---
+
+(source_file
+  (statement
+    (assignment
+      (identifier)
+      (string))))
+
+=========================================
+Double-quoted string with interior single
+=========================================
+
+devices = "d0,'d1',d2"
+
+---
+
+(source_file
+  (statement
+    (assignment
+      (identifier)
+      (string))))
+
+=========================================
+Single-quoted string with interior double
+=========================================
+
+devices = 'd0,"d1",d2'
+
+---
+
+(source_file
+  (statement
+    (assignment
+      (identifier)
+      (string))))
+
+===============================
+Double-quoted strings in blocks
+===============================
+
+devices = "d0,d1,d2"
+device.d1 {
+ t = "value"
+}
+device.d2 { s = "value" }
+
+---
+
+(source_file
+  (statement
+    (assignment
+      (identifier)
+      (string)))
+  (statement
+    (expression
+      (identifier)))
+  (statement
+    (expression
+      (operator)))
+  (statement
+    (expression
+      (identifier)))
+  (statement
+    (expression
+      (block
+        (statement
+          (assignment
+            (identifier)
+            (string))))))
+  (statement
+    (expression
+      (identifier)))
+  (statement
+    (expression
+      (operator)))
+  (statement
+    (expression
+      (identifier)))
+  (statement
+    (expression
+      (block
+        (statement
+          (assignment
+            (identifier)
+            (string)))))))
+
+===============================
+Single-quoted strings in blocks
+===============================
+
+devices = 'd0,d1,d2'
+device.d1 {
+ t = 'value'
+}
+device.d2 { s = 'value' }
+
+---
+
+(source_file
+  (statement
+    (assignment
+      (identifier)
+      (string)))
+  (statement
+    (expression
+      (identifier)))
+  (statement
+    (expression
+      (operator)))
+  (statement
+    (expression
+      (identifier)))
+  (statement
+    (expression
+      (block
+        (statement
+          (assignment
+            (identifier)
+            (string))))))
+  (statement
+    (expression
+      (identifier)))
+  (statement
+    (expression
+      (operator)))
+  (statement
+    (expression
+      (identifier)))
+  (statement
+    (expression
+      (block
+        (statement
+          (assignment
+            (identifier)
+            (string)))))))
+

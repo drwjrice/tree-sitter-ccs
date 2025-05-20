@@ -1,0 +1,40 @@
+{
+  "$schema": "https://tree-sitter.github.io/tree-sitter/assets/schemas/config.schema.json",
+  "grammars": [
+    {
+      "name": "ccs",
+      "camelcase": "Ccs",
+      "title": "CCS",
+      "scope": "source.ccs",
+      "file-types": [
+        "ccs"
+      ],
+      "injection-regex": "^ccs$",
+      "class-name": "TreeSitterCcs"
+    }
+  ],
+  "metadata": {
+    "version": "0.1.0",
+    "license": "MIT",
+    "description": "CCS is a language for config files, and libraries to read those files and configure applications.",
+    "authors": [
+      {
+        "name": "Jacob Rice",
+        "email": "jrice@drwholdings.com",
+        "url": "https://github.com/drwjrice"
+      }
+    ],
+    "links": {
+      "repository": "https://github.com/drwjrice/tree-sitter-ccs"
+    }
+  },
+  "bindings": {
+    "c": true,
+    "go": true,
+    "node": true,
+    "python": true,
+    "rust": true,
+    "swift": true,
+    "zig": false
+  }
+}
