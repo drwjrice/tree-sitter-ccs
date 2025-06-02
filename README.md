@@ -23,7 +23,7 @@ local function exists(file)
 end
 
 local function alert_if_not_exists(path)
-  if not exists(path) then require "notify"(path .. " does not exist") end
+  if not exists(path) then vim.notify(path .. " does not exist") end
 end
 
 -- Installing doesn't automatically link queries directory, so we do it here
@@ -37,11 +37,11 @@ local function _link_query_into_plugin(parser_name, parser_plugin, destination_p
   local plugin_queries = plugin_path .. "/queries"
 
   if exists(plugin_path) and exists(plugin_queries) and not exists(parser_queries) then
-    require "notify"("Setting up " .. parser_name .. " queries")
+    vim.notify("Setting up " .. parser_name .. " queries")
 
     local command = "ln -s " .. plugin_queries .. " " .. parser_queries
     local success = os.execute(command)
-    if not success then require "notify" "Failed to create symlink." end
+    if not success then vim.notify("Failed to create symlink.") end
   end
 end
 
@@ -64,7 +64,8 @@ return {
     lazy = false,
     opts = {
       ensure_installed = {
-        ...
+        "ccs",
+        -- Others...
       },
     },
     auto_install = true,
