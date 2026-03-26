@@ -2,19 +2,23 @@
 
 set -euo pipefail
 
-nvim_plugins="${1:-$HOME/.local/share/nvim/lazy}"
+site_dir="${1:-$HOME/.local/share/nvim/site}"
 
-if [ ! -d "${nvim_plugins}/nvim-treesitter" ]; then
-  echo "${nvim_plugins}/nvim-treesitter does not exist!" 1>&2
-  exit 1
+mkdir -p "${site_dir}/queries/ccs"
+cp queries/highlights.scm "${site_dir}/queries/ccs/"
+
+if [ -f queries/context.scm ]; then
+  cp queries/context.scm "${site_dir}/queries/ccs/"
 fi
 
-query_dir="${nvim_plugins}/nvim-treesitter/queries/ccs"
-mkdir -p "${query_dir}"
-cp queries/highlights.scm "${query_dir}"
+cat <<EOF
+Copied CCS queries into:
+  ${site_dir}/queries/ccs
 
-if [ -d "${nvim_plugins}/nvim-treesitter-context" ]; then
-  context_dir="${nvim_plugins}/nvim-treesitter-context/queries/ccs"
-  mkdir -p "${context_dir}"
-  cp queries/context.scm "${context_dir}"
-fi
+This helper is mainly for debugging or manual overrides.
+With current nvim-treesitter, the preferred setup is to register the parser with:
+  install_info.path = '~/code/tree-sitter-ccs'
+  queries = 'queries'
+
+That lets nvim-treesitter manage the active query path automatically.
+EOF
